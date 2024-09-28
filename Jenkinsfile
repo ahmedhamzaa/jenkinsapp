@@ -16,8 +16,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("exp1-spring"){
+                dir("jenkinsapp"){
                       sh "mvn clean install"
+                  }
+            }
+        }
+        stage('Build') {
+            steps {
+                dir("jenkinsapp"){
+                      sh "docker compose up -d"
                   }
             }
         }
